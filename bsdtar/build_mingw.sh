@@ -3,7 +3,7 @@ dp0="$(realpath "$(dirname "$0")")"
 set -e
 
 tool_name="bsdtar.exe"
-tool_version="3.7.1"
+tool_version="3.7.3"
 self_toolset_name="build-mingw"
 
 download_url="https://github.com/libarchive/libarchive/releases/download/v$tool_version/libarchive-$tool_version.tar.gz"
@@ -17,7 +17,7 @@ ci_download_url="https://raw.githubusercontent.com/libarchive/libarchive/v$tool_
 wget "$ci_download_url" -O "$dp0/ci.cmd"
 
 patch "$dp0/ci.cmd" "$dp0/release/bdstar_remove_bzip2.diff"
-
+choco install mingw
 echo "::endgroup::"
 
 echo "::group::build"
